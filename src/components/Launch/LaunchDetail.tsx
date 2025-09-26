@@ -2,7 +2,7 @@
 
 import { Launch } from '@/types/spacex';
 import { useFavorites } from '@/hooks/useFavorites';
-import Image from 'next/image';
+import Button from '../Button/page';
 
 interface LaunchDetailProps {
   selectedLaunch: Launch | null;
@@ -48,12 +48,14 @@ export default function LaunchDetail({ selectedLaunch }: LaunchDetailProps) {
 
   return (
     <div className="bg-white rounded-lg p-6">
-       
+
       <div className="aspect-square bg-slate-600 rounded-lg mb-4 relative overflow-hidden">
         {selectedLaunch.links.patch.large ? (
-          <Image 
-            src={selectedLaunch.links.patch.large} 
+          <img
+            src={selectedLaunch.links.patch.large}
             alt={selectedLaunch.name}
+            width={300}
+            height={300}
             className="w-full h-full object-cover"
           />
         ) : (
@@ -64,47 +66,62 @@ export default function LaunchDetail({ selectedLaunch }: LaunchDetailProps) {
           </div>
         )}
       </div>
-      
+
       <h2 className="text-2xl font-bold mb-3">{selectedLaunch.name}</h2>
-      
+
       <div className="space-y-3 mb-6">
         <div>
           <span className="text-gray-600">Launch Date: </span>
           <span className="font-medium">{formatDate(selectedLaunch.date_utc)}</span>
         </div>
-        
+
         <div>
           <span className="text-gray-600">Rocket: </span>
           <span className="font-medium">Falcon 9</span>
         </div>
-        
+
         <div>
           <span className="text-gray-600">Status: </span>
           <span className={`px-2 py-1 rounded-full text-sm font-medium ${getStatusColor()}`}>
             {getStatusText()}
           </span>
         </div>
-        
+
         <div>
           <span className="text-gray-600">Flight Number: </span>
           <span className="font-medium">#{selectedLaunch.flight_number || Math.floor(Math.random() * 200)}</span>
         </div>
-        
+
         <div>
-          <span className="text-gray-600">Launch Site: </span>
-          <span className="font-medium">Kennedy Space Center</span>
+          <span className="text-gray-600">Success Rate: </span>
+          <span className="font-medium">{selectedLaunch.success ? '100%' : selectedLaunch.success === false ? '0%' : 'TBD'}</span>
         </div>
         
+        <div>
+          <span className="text-gray-600">Launch Type: </span>
+          <span className="font-medium">{selectedLaunch.upcoming ? 'Scheduled' : 'Completed'}</span>
+        </div>
+        
+        <div>
+          <span className="text-gray-600">Mission ID: </span>
+          <span className="font-medium text-xs">{selectedLaunch.id.slice(0, 8).toUpperCase()}</span>
+        </div>
+        
+        <div>
+          <span className="text-gray-600">Launch Year: </span>
+          <span className="font-medium">{new Date(selectedLaunch.date_utc).getFullYear()}</span>
+        </div>
+
         {selectedLaunch.details && (
           <div>
             <span className="text-gray-600">Mission Details: </span>
             <p className="text-sm mt-1 text-gray-700">{selectedLaunch.details}</p>
           </div>
         )}
-        
+
         {selectedLaunch.links.webcast && (
           <div>
-            <a 
+            <a
               href={selectedLaunch.links.webcast}
               target="_blank"
               rel="noopener noreferrer"
@@ -115,16 +132,11 @@ export default function LaunchDetail({ selectedLaunch }: LaunchDetailProps) {
           </div>
         )}
       </div>
-      
-      <button 
+      <Button
+        caption="Favourite"
+        className="w-full py-3 bg-red-600 text-white font-semibold rounded-lg flex items-center justify-center gap-2 hover:bg-orange-600 transition-colors"
         onClick={() => toggleFavorite(selectedLaunch.id)}
-        className="w-full py-3 bg-blue-600 text-white rounded-lg flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors"
-      >
-        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-        </svg>
-        Favorite
-      </button>
+      />
     </div>
   );
 }

@@ -13,10 +13,10 @@ export default function Home() {
   const [showFavorites, setShowFavorites] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6">
+    <div className="h-screen bg-gray-50 p-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <div className="lg:col-span-8">
+          <div className="lg:col-span-8 h-screen overflow-hidden">
             {showFavorites ? (
               <FavoritesPanel 
                 onBack={() => setShowFavorites(false)}
@@ -29,7 +29,7 @@ export default function Home() {
               />
             )}
           </div>
-          <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-4 space-y-6 pt-8 pb-8 h-screen overflow-y-auto scrollbar-hide">
             <LaunchDetail selectedLaunch={selectedLaunch} />
             {showError && <ErrorMessage />}
           </div>

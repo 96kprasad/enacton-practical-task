@@ -1,14 +1,16 @@
 import React from "react";
 
 interface ButtonProps {
-  caption: string; // caption prop
+  svgImage?: React.ReactNode;
+  caption: string;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   className?: string;
   disabled?: boolean;
 }
-
+  
 export default function Button({
+  svgImage,
   caption,
   onClick,
   type = "button",
@@ -27,6 +29,7 @@ export default function Button({
         ${className}
       `}
     >
+      {svgImage ? svgImage : null}
       {caption}
     </button>
   );

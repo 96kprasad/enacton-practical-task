@@ -85,7 +85,7 @@ export default function LaunchGrid({ onLaunchSelect, onShowFavorites }: LaunchGr
   }, [searchTerm, filters]);
 
   return (
-    <div className="bg-white rounded-lg p-6">
+    <div className="bg-white rounded-lg p-6 h-full overflow-y-auto scrollbar-hide">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-bold">SpaceX</h1>
         <button 
