@@ -118,10 +118,17 @@ Using React Query for server state management:
 
 ### Running Tests
 ```bash
-npm run test
-# or
-yarn test
+npm run test          # Run all tests
+npm run test:watch    # Run tests in watch mode  
+npm run test:coverage # Run tests with coverage report
+yarn test             # Alternative with yarn
 ```
+
+### Test Files Location
+- `tests/useFavorites.test.ts` - Hook testing for localStorage integration
+- `tests/LaunchCard.test.tsx` - Component testing for rendering and interactions
+- `jest.config.js` - Jest configuration with React Testing Library setup
+- `jest.setup.js` - Test environment setup and global configurations
 
 ## 📱 User Experience
 
@@ -161,6 +168,14 @@ yarn test
 3. Make your changes
 4. Add tests for new functionality
 5. Submit a pull request
+
+## 🚀 Future Improvements
+
+### Next Implementation Priorities
+- **Virtualization**: Implement react-window for better performance with 1000+ launches and smoother scrolling
+- **Advanced Filtering**: Add date range picker, rocket type filters, and mission outcome filtering
+- **Design Improvements**: Enhanced animations, dark mode toggle, and improved mobile responsiveness
+- **Offline Support**: Add service worker for offline functionality, background sync, and enhanced PWA capabilities
 
 ## 📄 License
 
