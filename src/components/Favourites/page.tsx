@@ -5,11 +5,8 @@ import { useFavorites } from '@/hooks/useFavorites';
 import { useLaunches } from '@/hooks/useLaunches';
 import { Launch } from '@/types/spacex';
 import LaunchCard from '../Launch/LaunchCard';
+import { FavoritesPanelProps } from '@/types/spacex';
 
-interface FavoritesPanelProps {
-  onBack: () => void;
-  onLaunchSelect: (launch: Launch) => void;
-}
 
 export default function FavoritesPanel({ onBack, onLaunchSelect }: FavoritesPanelProps) {
   const { favorites, clearAllFavorites } = useFavorites();
@@ -21,7 +18,7 @@ export default function FavoritesPanel({ onBack, onLaunchSelect }: FavoritesPane
   }, [favorites, launches]);
 
   return (
-    <div className="bg-white rounded-lg p-6">
+    <div className="bg-white rounded-lg pb-12 p-6 h-screen overflow-y-auto scrollbar-hide">
       <div className="flex items-center justify-between mb-6">
         <div className="flex items-center gap-4">
           <button 
@@ -53,7 +50,7 @@ export default function FavoritesPanel({ onBack, onLaunchSelect }: FavoritesPane
       )}
 
       {favoriteLaunches.length > 0 && (
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-3 gap-4">
           {favoriteLaunches.map((launch: Launch) => (
             <LaunchCard
               key={launch.id}

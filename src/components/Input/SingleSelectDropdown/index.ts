@@ -1,1 +1,1 @@
-export { default } from "./SingleSelectDropdown";
+export { default } from "./page";

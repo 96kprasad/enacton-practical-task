@@ -16,7 +16,6 @@ export function useLaunches() {
   });
 
   const loadMore = () => {
-    // Load more functionality
   };
 
   return {

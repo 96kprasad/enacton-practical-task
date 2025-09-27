@@ -49,3 +49,40 @@ export interface SortOption {
   value: string;
   label: string;
 }
+
+// Component Props Interfaces
+export interface SearchFiltersProps {
+  showFilters: boolean;
+  onToggleFilters: () => void;
+}
+
+export interface FilterState {
+  success: string;
+  upcoming: string;
+  year: string;
+  sortBy: string;
+}
+
+export interface LaunchCardProps {
+  launch: Launch;
+  onClick: () => void;
+}
+
+export interface LaunchDetailProps {
+  selectedLaunch: Launch | null;
+}
+
+export interface LaunchGridProps {
+  onLaunchSelect: (launch: Launch) => void;
+  onShowFavorites: () => void;
+}
+
+export interface FavoritesPanelProps {
+  onBack: () => void;
+  onLaunchSelect: (launch: Launch) => void;
+}
+
+export interface DetailRowProps {
+  label: string;
+  value: string | React.ReactNode;
+}

@@ -2,7 +2,7 @@
 
 import LaunchGrid from '@/components/Launch/LaunchGrid';
 import LaunchDetail from '@/components/Launch/LaunchDetail';
-import FavoritesPanel from '@/components/Favourites/FavoritesPanel';
+import FavoritesPanel from '@/components/Favourites/page';
 import ErrorMessage from '@/components/ErrorMessage/page';
 import { useState } from 'react';
 import { Launch } from '@/types/spacex';

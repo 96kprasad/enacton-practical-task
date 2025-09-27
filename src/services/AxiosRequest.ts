@@ -7,7 +7,7 @@ import { APIURL } from './ApiEndPoints';
 import { axiosInstance } from '../../utils/AxiosInterceptor';
 import { AxiosResponse } from 'axios';
 
-// common post request with encryption
+// common post request
 export function axiosPost<T = unknown>(url: string, request: unknown): Promise<AxiosResponse<T>> {
     const data = { data: request };
     return axiosInstance.post(APIURL + url, data);
