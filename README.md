@@ -5,7 +5,7 @@ A modern React/Next.js application for exploring SpaceX launches with advanced f
 ## 🚀 Features
 
 ### Core Features (Hard Constraints)
-- **Search & Filter**: Debounced global search with filters for launch status, upcoming/past launches, and year
+- **Search & Filter**: Debounced global search with filters for launch status and upcoming/past launches
 - **List & Detail**: Virtualized grid view of launches with detailed information panel
 - **Infinite Scroll**: Smooth infinite scrolling with IntersectionObserver API
 - **Favorites**: Persistent favorites with localStorage and bulk remove functionality
@@ -13,14 +13,14 @@ A modern React/Next.js application for exploring SpaceX launches with advanced f
 - **Performance**: Debounced search, request cancellation, and API response caching with React Query
 - **Architecture**: Modular components, custom hooks, and React Query for state management
 - **Testing**: Unit tests for hooks and components using Jest/React Testing Library
-- **Virtualization**: react-window for performance optimization with large lists
+
 
 ### Technical Implementation
 - **API**: SpaceX API v4 (https://api.spacexdata.com/v4)
 - **State Management**: React Query for server state + localStorage for favorites
 - **Styling**: Tailwind CSS for responsive design
 - **TypeScript**: Full type safety throughout the application
-- **Performance**: Request caching, debounced search, virtualization, and optimized re-renders
+- **Performance**: Request caching, debounced search, and optimized re-renders
 
 ## 🛠 Installation & Setup
 
@@ -75,7 +75,7 @@ src/
 ```
 
 ### Key Components
-- **LaunchGrid**: Virtualized grid view with infinite scroll
+- **LaunchGrid**: Grid view with infinite scroll
 - **LaunchCard**: Individual launch card with favorites
 - **LaunchDetail**: Detailed launch information panel
 - **SearchFilters**: Search and filtering controls
@@ -94,7 +94,6 @@ Using React Query for server state management:
 - **Debounced Search**: 500ms delay to reduce API calls
 - **Request Cancellation**: Automatic cancellation of stale requests
 - **API Caching**: 5-minute cache with 10-minute garbage collection
-- **Virtualization**: react-window for efficient rendering of large lists
 - **Optimized Re-renders**: Proper dependency arrays and memoization
 
 ## 🔧 API Integration
@@ -131,13 +130,13 @@ yarn test
 - **Loading States**: Smooth loading indicators with React Query
 - **Error Handling**: User-friendly error messages and retry mechanisms
 - **Visual Feedback**: Status indicators, hover effects, loading skeletons
-- **Performance**: Virtualized lists for smooth scrolling with large datasets
+- **Performance**: Infinite scroll for smooth navigation with large datasets
 
 ### Search & Filtering
 - **Global Search**: Debounced search across launch names
 - **Status Filter**: Success, Failed, or All launches
 - **Timeline Filter**: Upcoming, Past, or All launches
-- **Year Filter**: Filter by specific launch year
+
 - **Sorting**: By date (newest first) or alphabetical by name
 
 ## 🔮 Assumptions & Design Decisions
@@ -150,7 +149,7 @@ yarn test
 
 ### Design Decisions
 - **React Query over Redux**: Better for server state, automatic caching
-- **Virtualization**: Essential for performance with 200+ launches
+- **Infinite Scroll**: Efficient loading for handling 200+ launches
 - **localStorage for Favorites**: Simple, fast, and persistent across sessions
 - **Debounced Search**: Balances UX responsiveness with API efficiency
 - **Component Composition**: Modular design for reusability and testing
